@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8000:8000
+    networks:
+      - employee-hierarchy-portfolio
+    env_file: .env
+
+networks:
+  employee-hierarchy-portfolio:
+    driver: bridge
