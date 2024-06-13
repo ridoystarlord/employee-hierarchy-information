@@ -16,8 +16,9 @@ datasource db {
 model Employee {
   id           Int        @id @default(autoincrement())
   name         String
-  positionId   Int
+  username     String     @unique
   positionName String
+  password     String
   parent       Employee?  @relation("EmployeeToChildren", fields: [parentId], references: [id])
   parentId     Int?       @default(1)
   children     Employee[] @relation("EmployeeToChildren")

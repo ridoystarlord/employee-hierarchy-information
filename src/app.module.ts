@@ -7,7 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
-import { UsersModule } from './users/users.module';
+import { EmployeesModule } from './employees/employees.module';
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import { UsersModule } from './users/users.module';
       },
     ]),
     AuthModule,
-    UsersModule,
+    EmployeesModule,
   ],
   controllers: [AppController],
   providers: [

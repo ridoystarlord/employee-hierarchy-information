@@ -1,28 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
-import { UsersService } from '../users/users.service';
-
-import { LoginDTO } from './auth.dto';
+import { DatabaseService } from '../database/database.service';
+import { IsPasswordMatched } from '../utils/Password';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private usersService: UsersService,
     private jwtService: JwtService,
+    private database: DatabaseService,
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user && user.password === pass) {
-      delete user.password;
-      return user;
+  async validateEmployee(username: string, password: string): Promise<any> {
+    const employee = await this.database.employee.findUnique({
+      where: { username },
+    });
+    if (employee && IsPasswordMatched(password, employee.password)) {
+      delete employee.password;
+      return employee;
     }
     return null;
   }
 
-  async login(loginDto: LoginDTO): Promise<{ token: string }> {
-    const user = await this.usersService.findOne(loginDto.username);
+  async login(user): Promise<{ token: string }> {
     return {
       token: this.jwtService.sign(user),
     };
