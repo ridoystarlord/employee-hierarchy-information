@@ -44,7 +44,6 @@ export class EmployeesController {
     APIResponse(res, {
       success: true,
       message: 'Employee Added Successfully',
-      data: req.user,
     });
   }
 

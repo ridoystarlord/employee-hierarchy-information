@@ -23,7 +23,6 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   async signIn(@Req() req, @Res() res) {
-    console.log(req.user);
     const token = await this.authService.login(req.user);
     APIResponse(res, {
       success: true,
