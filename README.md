@@ -24,6 +24,12 @@ $ yarn run migrate
 $ yarn run dev
 ```
 
+## API Documentation
+
+Once your application is running, access the API documentation at:
+
+[API Docs](http://localhost:8000/api-docs)
+
 ## Running the app with docker & database (Please make sure you use the docker postgresql connection url in env)
 
 ```bash
