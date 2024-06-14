@@ -9,6 +9,20 @@ services:
     networks:
       - employee-hierarchy-portfolio
     env_file: .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root1234
+    volumes:
+      - ~/postgresql/data:/var/lib/postgresql/data
+    networks:
+      - employee-hierarchy-portfolio
+    ports:
+      - 5432:5432
 
 networks:
   employee-hierarchy-portfolio:
