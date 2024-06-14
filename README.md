@@ -14,7 +14,6 @@ PORT=
 ## Migrate
 
 ```bash
-# development
 $ yarn run migrate
 ```
 
@@ -49,23 +48,28 @@ $ yarn run test:cov
 $ sudo apt install nginx
 ```
 
+## Clone the repository
+
 ```bash
-
-Clone the repository
-
 $ git clone https://github.com/ridoystarlord/employee-hierarchy-information.git
 $ cd employee-hierarchy-information
+```
 
-create .env
+## Run the application
 
+```bash
 $ docker compose up --build -d
+```
 
-create a new configuration file
+## create a new configuration file
 
+```bash
 $ sudo nano /etc/nginx/sites-available/nestjs-app
+```
 
-insert below configuration
+## insert below configuration
 
+```bash
 server {
     listen 80;
     server_name <your_domain>;
@@ -79,19 +83,24 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+```
 
-create symbolic link
+## create symbolic link
 
+```bash
 $ sudo ln -s /etc/nginx/sites-available/nestjs-app /etc/nginx/sites-enabled/
+```
 
-check the configuration
+## check the configuration
 
+```bash
 $ sudo nginx -t
+```
 
-reload the nginx configuration
+## reload the nginx configuration
 
+```bash
 $ sudo systemctl reload nginx
-
 ```
 
 ## Scaling
@@ -103,3 +112,7 @@ $ sudo systemctl reload nginx
 ## Monitoring and Logging
 
 - Use Prometheus and Grafana for monitoring.
+
+```
+
+```
